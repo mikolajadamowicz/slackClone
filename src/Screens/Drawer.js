@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { StyleSheet } from "react-native";
 import { NavigationActions, SafeAreaView } from "react-navigation";
-import { Text, Button, List, ListItem } from 'native-base'
+import { List, Container, Content } from "native-base";
 
 import DrawerDivider from '../Components/DrawerDivider';
+import ItemList from "../Components/ItemList";
 
 class Drawer extends Component {
   _navigateToScreen = route => () => {
@@ -13,31 +15,19 @@ class Drawer extends Component {
     this.props.navigation.dispatch(navigateAction);
   };
 
-  _renderItems = (items) => {
-    items.map((item, i) => {
-    return(
-        <ListItem key={i}>
-          <Button transparent onPress={this._navigateToScreen("Channel")}>
-            <Text># {item}</Text>
-          </Button>
-        </ListItem>
-        );
-        });
-  }
-
   _addItem = (array,item) => {
 
   }
 
   render() {
     return <Container>
-        <SafeAreaView style={styles.container} forceInset={{ top: "always", horizontal: "never" }}>
-          <Content>
+      <SafeAreaView style={styles.safeArea} forceInset={{ top: "always", horizontal: "never" }}>
+          <Content style={styles.content}>
             <List>
-              <DrawerDivider title='CHANNELS'/>
-              {this._renderItems(['mike', 'justin'])}
-              <DrawerDivider title='DIRECT MESSAGES' />
-              {this._renderItems(['mike','justin'])}
+              <DrawerDivider title="CHANNELS" />
+              <ItemList items={["mike", "justin"]} onPress={this._navigateToScreen("Channel")} />
+              <DrawerDivider title="DIRECT MESSAGES" />
+              <ItemList items={["mike", "justin"]} />
             </List>
           </Content>
         </SafeAreaView>
@@ -50,10 +40,15 @@ Drawer.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1
-  }
+  },
+  content: {
+    backgroundColor: "#5c3a58"
+  },
 });
+
+
 
 export default Drawer;
 

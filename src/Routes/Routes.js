@@ -4,8 +4,8 @@ import {
   createDrawerNavigator,
 } from 'react-navigation'; 
 
-import Drawer from '../src/Drawer';
-import Channel from "../src/Channel";
+import Drawer from '../Screens/Drawer';
+import Channel from "../Screens/Channel";
 
 
 const DrawerStack = createDrawerNavigator(

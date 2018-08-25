@@ -11,7 +11,7 @@ export default class Channel extends Component {
 
   render() {
     return<Container>
-          <AppHeader title={"tutaj wrzucic porps z nawigacji"} />          
+      <AppHeader title="tutaj" {...this.props} />          
           <View style={styles.container}>
             <SlackChat />
           </View>          

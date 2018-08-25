@@ -13,12 +13,12 @@ import PropTypes from "prop-types";
 const AppHeader = (props) => (
         <Header>
           <Left>
-          <Button transparent onPress={() => navigation.toggleDrawer()}>
+          <Button transparent onPress={() => props.navigation.toggleDrawer()}>
               <Icon name="menu" />
             </Button>
           </Left>
           <Body>
-            <Title># {this.props.title}</Title>
+            <Title># {props.title}</Title>
           </Body>
           <Right>
             <Button transparent>
