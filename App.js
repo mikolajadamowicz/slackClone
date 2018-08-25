@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DrawerStack from "./src/Routes/Routes";
+import DrawerStack from "./src/Routes/routes";
 
 export default class App extends React.Component {
   render() {

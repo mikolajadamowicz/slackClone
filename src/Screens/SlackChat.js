@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import emojiUtils from 'emoji-utils';
 
-import SlackMessage from './Components/SlackMessage';
+import SlackMessage from '../Components/SlackMessage';
 
 export default class SlackChat extends React.Component {
   state = {

@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-// import styles from './SideMenu.style';
 import { NavigationActions, SafeAreaView } from "react-navigation";
-import { Text, Icon, Button, List, ListItem, Left, Body } from 'native-base'
+import { Text, Button, List, ListItem } from 'native-base'
 
-import DrawerDivider from './Components/DrawerDivider';
+import DrawerDivider from '../Components/DrawerDivider';
 
 class Drawer extends Component {
   _navigateToScreen = route => () => {
@@ -27,7 +26,7 @@ class Drawer extends Component {
   }
 
   _addItem = (array,item) => {
-    
+
   }
 
   render() {
@@ -36,12 +35,7 @@ class Drawer extends Component {
           <Content>
             <List>
               <DrawerDivider title='CHANNELS'/>
-              <ListItem>
-                <Text>Aaron Bennet</Text>
-              </ListItem>
-              <ListItem>
-                <Text>Ali Connors</Text>
-              </ListItem>
+              {this._renderItems(['mike', 'justin'])}
               <DrawerDivider title='DIRECT MESSAGES' />
               {this._renderItems(['mike','justin'])}
             </List>
