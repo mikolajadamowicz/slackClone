@@ -10,12 +10,13 @@ import SlackChat from "./SlackChat";
 export default class Channel extends Component {
 
   render() {
-    return<Container>
-      <AppHeader title="tutaj" {...this.props} />          
-          <View style={styles.container}>
-            <SlackChat />
-          </View>          
-        </Container>;
+    const { state } = this.props.navigation;
+    return <Container>
+        <AppHeader title={state.title} {...this.props} />
+        <View style={styles.container}>
+          <SlackChat />
+        </View>
+      </Container>;
   }
 }
 

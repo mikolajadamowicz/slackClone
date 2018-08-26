@@ -16,6 +16,7 @@ const DrawerStack = createDrawerNavigator(
   },
   {
     initialRouteName: "Channel",
+    initialRouteParams:{ title:'general' },
     contentComponent: Drawer
   }
 );

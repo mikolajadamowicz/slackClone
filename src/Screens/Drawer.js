@@ -1,31 +1,33 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { StyleSheet } from "react-native";
-import { NavigationActions, SafeAreaView } from "react-navigation";
+import { NavigationActions, SafeAreaView, StackActions } from "react-navigation";
 import { List, Container, Content } from "native-base";
+import { connect } from 'react-redux'
 
 import DrawerDivider from '../Components/DrawerDivider';
 import ItemList from "../Components/ItemList";
 
 class Drawer extends Component {
-  _navigateToScreen = route => () => {
+  _navigateToScreen = (params) => () => {
     const navigateAction = NavigationActions.navigate({
-      routeName: route
+      routeName: "Channel",
     });
-    this.props.navigation.dispatch(navigateAction);
+    const resetAction = StackActions.reset({
+      index:0,
+      actions: [navigateAction]
+    })
+    this.props.navigation.dispatch(resetAction);
   };
 
-  _addItem = (array,item) => {
-
-  }
-
   render() {
+   const { props } = this;
     return <Container>
       <SafeAreaView style={styles.safeArea} forceInset={{ top: "always", horizontal: "never" }}>
           <Content style={styles.content}>
             <List>
               <DrawerDivider title="CHANNELS" />
-              <ItemList items={["mike", "justin"]} onPress={this._navigateToScreen("Channel")} />
+            <ItemList items={props.channels} navigate={(title) => this.props.navigation.setParams({ title })} />
               <DrawerDivider title="DIRECT MESSAGES" />
               <ItemList items={["mike", "justin"]} />
             </List>
@@ -48,8 +50,14 @@ const styles = StyleSheet.create({
   },
 });
 
+const mapState = (state) => ({
+  channels: state.channels
+});
 
+const mapDispatch = dispatch => ({
+  addChannel: () => dispatch.channels.addChannel()
+});
 
-export default Drawer;
+export default connect(mapState, mapDispatch)(Drawer);
 
 

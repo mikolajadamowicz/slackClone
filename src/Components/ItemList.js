@@ -5,7 +5,12 @@ import { Button } from "native-base";
 export default ItemList = (props) => {
   const items = props.items;
   const listItems = items.map((item, i) => (
-    <Button key={i} transparent onPress={props.onPress} style={styles.button}>
+    <Button
+      key={i}
+      transparent
+      onPress={() => props.navigate(item)}
+      style={styles.button}
+    >
       <Text style={styles.hash}># </Text>
       <Text style={styles.text}>{item}</Text>
     </Button>
